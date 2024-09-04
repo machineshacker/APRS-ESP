@@ -39,7 +39,7 @@ jobs:
   build-native:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build base
         id: base
         uses: ./.github/actions/setup-base
@@ -52,7 +52,7 @@ jobs:
         id: version
 
       - name: Store binaries as an artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: firmware-native-${{ steps.version.outputs.version }}.zip
           path: |
@@ -65,12 +65,12 @@ jobs:
       [build-esp32, build-esp32-s3, build-native]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           path: ./
 
@@ -82,7 +82,7 @@ jobs:
         run: mv -b -t ./ ./**/firmware*.bin ./*native*/*device-*.sh ./*native*/*device-*.bat
 
       - name: Repackage in single firmware zip
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: firmware-${{ steps.version.outputs.version }}
           path: |
@@ -91,7 +91,7 @@ jobs:
             ./device-*.bat
           retention-days: 5
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: firmware-${{ steps.version.outputs.version }}
           path: ./output
@@ -126,7 +126,7 @@ jobs:
     needs: [gather-artifacts]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -141,7 +141,7 @@ jobs:
         run: echo "short_version=$(./bin/buildinfo.py short)" >> $GITHUB_OUTPUT
         id: short_version
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: firmware-${{ steps.version.outputs.version }}
           path: ./output
