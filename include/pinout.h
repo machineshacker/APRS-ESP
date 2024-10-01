@@ -22,10 +22,10 @@
 #define SQL_PIN             -1
 
 // Interface to the radio / radio module
-#define SPK_PIN             ADC1_CHANNEL_0  // Read ADC1_0 From PIN 36(VP)
-#define MIC_PIN             26              // Out wave to PIN 26
+#define SPK_PIN             ADC2_CHANNEL_2  // Read ADC2_0 From PIN 13
+#define MIC_PIN             12             // Out wave to PIN 12
 //#define PTT_PIN             25
-#define PTT_PIN             32
+#define PTT_PIN             7
 #define RX_LED_PIN          2
 #define TX_LED_PIN          4
 // #define RSSI_PIN            33
@@ -36,20 +36,20 @@
 // RF UART
 #define SERIAL_RF_UART      1
 #define SERIAL_RF_BAUD      9600
-#define SERIAL_RF_RXPIN     14
-#define SERIAL_RF_TXPIN     13
+#define SERIAL_RF_RXPIN     10
+#define SERIAL_RF_TXPIN     11
 
 // GPS UART
 #define SERIAL_GPS_UART     2
 #define SERIAL_GPS_BAUD     9600
-#define SERIAL_GPS_RXPIN    16
-#define SERIAL_GPS_TXPIN    17
+#define SERIAL_GPS_RXPIN    21
+#define SERIAL_GPS_TXPIN    46
 
 // I2C OLED
 #define OLED_WIDTH          128
-#define OLED_HEIGHT         64
-#define OLED_SDA_PIN        21
-#define OLED_SCL_PIN        22
+#define OLED_HEIGHT         32
+#define OLED_SDA_PIN        8
+#define OLED_SCL_PIN        9
 #define OLED_RST_PIN        -1
 
 // ROTARY ENCODER

@@ -62,7 +62,7 @@ GERBER data is [here](hardware/GERBER/APRS-ESP32_SA8x8_V1.7_Rev_D_2022-10-27.zip
 PCB Layout is [here](hardware/APRS-ESP32_SA8x8_Rev_D_PCB.pdf)
 
 Schematic PDF is [here](hardware/APRS-ESP32_SA8x8_Rev_D_Schematics.pdf)
-
+Z       uuuuu
 ### BOM list  
 
 Bill Of Materials (BOM) is [here](hardware/APRS-ESP32_SA8x8_Rev_D_BOM.txt)
