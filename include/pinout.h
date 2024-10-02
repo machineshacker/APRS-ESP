@@ -17,16 +17,15 @@
 //#define VBAT_PIN            35
 //#define POWER_PIN           12
 //#define POWER_PIN           23
-#define POWER_PIN           20
+#define POWER_PIN           7
 #define POWERDOWN_PIN       3
 #define SQL_PIN             -1
 
 // Interface to the radio / radio module
-#define SPK_PIN             ADC2_CHANNEL_2  // Read ADC2_0 From PIN 13
+#define SPK_PIN             ADC1_CHANNEL_8  // Read ADC1_8 From PIN 9x
 #define MIC_PIN             12             // Out wave to PIN 12
-//#define PTT_PIN             25
 #define PTT_PIN             14
-#define RX_LED_PIN          2
+#define RX_LED_PIN          13
 #define TX_LED_PIN          4
 // #define RSSI_PIN            33
 
@@ -48,13 +47,13 @@
 // I2C OLED
 #define OLED_WIDTH          128
 #define OLED_HEIGHT         32
-#define OLED_SDA_PIN        8
-#define OLED_SCL_PIN        9
+#define OLED_SDA_PIN        1
+#define OLED_SCL_PIN        2
 #define OLED_RST_PIN        -1
 
 // ROTARY ENCODER
 #define PIN_ROT_CLK         47
-#define PIN_ROT_DT          48
+#define PIN_ROT_DT          45
 #define PIN_ROT_BTN         5   // IO0 may be handled too?
 
 #endif /* BOARD_ESP32DR */
