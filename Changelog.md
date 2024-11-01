@@ -36,14 +36,15 @@ It _works_ after the dra818 warms up for around 5 min. The person that designed 
 
 
 
-### CHANGELOG OF ISSUES 
+### CHANGELOG 
 
 
 
 
 ### Fix for Issue 1. 
 
-This block of code at ln-1345 in main.cpp is commented out. This seems to be clobbering the I2C bus resulting in the below core 1 panic. AFSK_Poll is in /lib/AFSK.cpp ln-891. *** TODO *** here to further debug this. 
+- (['9fa0cf8'](https://github.com/machineshacker/APRS-ESP/commit/9fa0cf8))
+This block of code at ln-1345 in main.cpp is commented out. This seems to be clobbering the I2C bus resulting in the below core 1 panic. AFSK_Poll is in /lib/AFSK.cpp ln-891. *** TODO *** to further debug this. 
 
 // #if defined(BOARD_ESP32DR)
 //     if (AFSKInitAct == true) {
@@ -56,6 +57,10 @@ This block of code at ln-1345 in main.cpp is commented out. This seems to be clo
 
 
 ### Issue 1.
+Radio boots. Kernel panic somewhere. 
+- (['05c3b9a'](https://github.com/machineshacker/APRS-ESP/commit/05c3b9a))
+
+
 
 ### dump of the core 1 panic
 [ 10508][I][rfModem.cpp:116] RF_Init(): AT+DMOSETVOLUME=4
