@@ -826,7 +826,7 @@ void setup()
     // enableLoopWDT();
     // enableCore0WDT();
 
-    enableCore1WDT();
+     enableCore1WDT();
 
     // Task 1
     xTaskCreatePinnedToCore(taskAPRS,   /* Function to implement the task */
@@ -1339,11 +1339,14 @@ void loop()
     }
 #endif
 
-#if defined(BOARD_ESP32DR)
-    if (AFSKInitAct == true) {
-        AFSK_Poll(true);
-    }
-#endif
+
+// This seems to be clobbering the I2C bus and it's disabled in variables anyway. 
+
+// #if defined(BOARD_ESP32DR)
+//     if (AFSKInitAct == true) {
+//         AFSK_Poll(true);
+//     }
+// #endif
 }
 
 String sendIsAckMsg(String toCallSign, char *msgId) {

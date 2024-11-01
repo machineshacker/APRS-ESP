@@ -1,4 +1,7 @@
-### Notes of the project. 
+### Changelog of the project. 
+
+## Version - Date
+## 0.0.1 2024-10-31
 
 
 ### Config info
@@ -21,15 +24,38 @@ spiffs,   data, spiffs,  0xc90000,0x360000,
 coredump, data, coredump,0xFF0000,0x10000,
 
 
-### KNOWN ISSUES ###
+### KNOWN HW ISSUES ###
+
 Bootloop at AT+SETFILTER
 [  7473][I][rfModem.cpp:27] rfAnswerCheck(): SA Answer OK
 [  7486][I][rfModem.cpp:94] RF_Init(): AT+SETFILTER=1,1,1
 [  8986][I][rfModem.cpp:23] rfAnswerCheck(): ->+DMOSETFILTER:0
 
-It _works_ after the dra818 warms up for around 5 min. The person that designed this board put 5V0 to a 3V3 device. 
+It _works_ after the dra818 warms up for around 5 min. The person that designed this board put 5V0 to a 3V3 device. sigh. 
 
 
+
+
+### CHANGELOG OF ISSUES 
+
+
+
+
+### Fix for Issue 1. 
+
+This block of code at ln-1345 in main.cpp is commented out. This seems to be clobbering the I2C bus resulting in the below core 1 panic. AFSK_Poll is in /lib/AFSK.cpp ln-891. *** TODO *** here to further debug this. 
+
+// #if defined(BOARD_ESP32DR)
+//     if (AFSKInitAct == true) {
+//         AFSK_Poll(true);
+//     }
+// #endif
+
+
+
+
+
+### Issue 1.
 
 ### dump of the core 1 panic
 [ 10508][I][rfModem.cpp:116] RF_Init(): AT+DMOSETVOLUME=4
