@@ -32,8 +32,6 @@
 #include <parse_aprs.h>
 #include <WiFiUdp.h>
 
-#include "rfModem.h"
-
 #ifdef USE_GPS
 #include "TinyGPS++.h"
 #endif
@@ -101,8 +99,6 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(1, PIXELS_PIN, NEO_GRB + NEO_KHZ800)
 #endif
 
 #endif
-
-HardwareSerial SerialRF(SERIAL_RF_UART);
 
 bool fwUpdateProcess = false;
 
@@ -228,7 +224,6 @@ bool pkgTxSend() {
                 memset(info, 0, sizeof(info));
                 strcpy(info, txQueue[i].Info);
                 psramBusy = false;
-                digitalWrite(POWER_PIN, config.rf_power); // RF Power set
                 status.txCount++;
                 String _empty = "";
                 String _msg = "TX";
@@ -256,7 +251,6 @@ bool pkgTxSend() {
 
                 // delay(2000);
                 TX_LED_OFF();
-                digitalWrite(POWER_PIN, 0); // RF Power Low
 #if defined(BOARD_TTWR_PLUS) || defined(BOARD_TTWR_V1)
                 adcActive(true);
 #endif
@@ -805,9 +799,6 @@ void setup()
 
     OledPostStartup("Load Config...");
     LoadConfig();
-
-    // RF SHOULD BE Initialized or there is no reason to startup at all
-    while (!RF_Init(true, true)) {};
 
 #if defined(USE_PMU)
     if (PMU.isVbusIn()) {
@@ -1468,8 +1459,6 @@ void taskAPRS(void *pvParameters) {
             if (sendByFlag) log_i("Send by Flag");
 
             if (digiCount > 0) digiCount--;
-
-            RF_Check();
 
             if (AFSKInitAct == true) {
                 if (callsignValid && config.tnc) {

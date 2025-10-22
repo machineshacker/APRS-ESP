@@ -17,8 +17,6 @@
 //#define VBAT_PIN            35
 //#define POWER_PIN           12
 //#define POWER_PIN           23
-#define POWER_PIN           7
-#define POWERDOWN_PIN       3
 #define SQL_PIN             -1
 
 // Interface to the radio / radio module
@@ -33,10 +31,6 @@
 #define SERIAL_DEBUG_BAUD   115200
 
 // RF UART
-#define SERIAL_RF_UART      1
-#define SERIAL_RF_BAUD      9600
-#define SERIAL_RF_RXPIN     11
-#define SERIAL_RF_TXPIN     10
 
 // GPS UART
 #define SERIAL_GPS_UART     2
@@ -63,8 +57,6 @@
 #define BOARD_NAME          "T-TWR-MOD"
 
 // SA8x8 radio module
-#define POWER_PIN           25
-#define POWERDOWN_PIN       27
 #define SQL_PIN             -1
 
 // Interface to the radio / radio module
@@ -84,10 +76,6 @@
 #define SERIAL_DEBUG_BAUD   115200
 
 // RF UART
-#define SERIAL_RF_UART      1
-#define SERIAL_RF_BAUD      9600
-#define SERIAL_RF_RXPIN     14
-#define SERIAL_RF_TXPIN     13
 
 // GPS UART
 #define SERIAL_GPS_UART     2
@@ -115,8 +103,6 @@
 
 // SA8x8 radio module
 // #define VBAT_PIN            36
-#define POWER_PIN           38
-#define POWERDOWN_PIN       40
 #define SQL_PIN             -1
 
 // Interface to the radio / radio module
@@ -140,10 +126,6 @@
 #define SERIAL_DEBUG_BAUD   115200
 
 // RF UART
-#define SERIAL_RF_UART      1
-#define SERIAL_RF_BAUD      9600
-#define SERIAL_RF_RXPIN     48
-#define SERIAL_RF_TXPIN     39
 
 // GPS UART
 #define SERIAL_GPS_UART     2
@@ -171,8 +153,6 @@
 
 // SA8x8 radio module
 // #define VBAT_PIN            36
-#define POWER_PIN           39
-#define POWERDOWN_PIN       40
 #define SQL_PIN             -1
 
 // Interface to the radio / radio module
@@ -202,10 +182,6 @@
 #define SERIAL_DEBUG_BAUD   115200
 
 // RF UART
-#define SERIAL_RF_UART      1
-#define SERIAL_RF_BAUD      9600
-#define SERIAL_RF_RXPIN     48
-#define SERIAL_RF_TXPIN     47
 
 // GPS UART
 #define SERIAL_GPS_UART     2
