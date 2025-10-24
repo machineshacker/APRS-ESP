@@ -157,8 +157,8 @@ void SaveConfig(bool storeBackup) {
 
 void DefaultConfig() {
     log_i("Applying Factory Default configuration!");
-    sprintf(config.aprs_mycall, "MYCALL");
-    config.aprs_ssid = 15;
+    sprintf(config.aprs_mycall, "KM6WOL");
+    config.aprs_ssid = 12;
     sprintf(config.aprs_host, "rotate.aprs2.net");
     config.aprs_port = 14580;
     sprintf(config.aprs_passcode, "00000");
@@ -174,14 +174,14 @@ void DefaultConfig() {
     config.gps_lat = 54.6842;
     config.gps_lon = 25.2398;
     config.gps_alt = 10;
-    config.tnc = false;
+    config.tnc = true;
     config.inet2rf = false;
     config.rf2inet = false;
     config.aprs = false;
     config.wifi = true;
     config.wifi_mode = WIFI_AP_FIX;
     config.tnc_digi = false;
-    config.tnc_telemetry = false;
+    config.tnc_telemetry = true;
     config.tnc_btext[0] = 0;
     config.tnc_beacon = 0;
     config.aprs_table = '/';
@@ -190,14 +190,14 @@ void DefaultConfig() {
     config.tx_timeslot = 5000;
     sprintf(config.aprs_path, "WIDE1-1");
     memset(config.aprs_object, 0, sizeof(config.aprs_object));
-    sprintf(config.aprs_comment, "ESP IG github.com/erstec/APRS-ESP");
+    sprintf(config.aprs_comment, "aprs-esp32");
     sprintf(config.tnc_comment, "APRS-ESP Built in TNC");
     sprintf(config.tnc_path, "WIDE1-1");
     config.wifi_power = 44;
     config.input_hpf = true;
 #ifndef BAND_70CM
-    config.freq_rx = 144.8000;
-    config.freq_tx = 144.8000;
+    config.freq_rx = 144.3875;
+    config.freq_tx = 144.3875;
 #else
     config.freq_rx = 432.5000;
     config.freq_tx = 432.5000;
@@ -208,14 +208,14 @@ void DefaultConfig() {
     config.tone_tx = 0;
     config.band = 1;
     config.sql_level = 1;
-    config.rf_power = LOW;
+    config.rf_power = HIGH;
     config.volume = 4;
     config.input_hpf = false;
     config.rx_att = false;
     input_HPF = config.input_hpf;
     config.timeZone = 0;
     sprintf(config.ntpServer, "pool.ntp.org");
-    config.gps_mode = GPS_MODE_FIXED;    // 0 - Auto, 1 - GPS only, 2 - Fixed only
+    config.gps_mode = GPS_MODE_GPS;    // 0 - Auto, 1 - GPS only, 2 - Fixed only
 
     config.sb_fast_speed = APRS_SB_FAST_SPEED;
     config.sb_fast_rate = APRS_SB_FAST_RATE;

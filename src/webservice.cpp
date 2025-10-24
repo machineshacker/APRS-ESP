@@ -1576,7 +1576,7 @@ void handle_radio() {
         // config.agc=agcEn;
         SaveConfig();
         // delay(100);
-        RF_Init(false);
+        //RF_Init(false);
     }
 
     setHTML(7);
