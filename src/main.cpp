@@ -202,7 +202,7 @@ int tlmListOld() {
 TelemetryType getTlmList(int idx) {
     TelemetryType ret;
     while (psramBusy)
-        delay(1);
+        vTaskDelay(1);
     psramBusy = true;
     memcpy(&ret, &Telemetry[idx], sizeof(TelemetryType));
     psramBusy = false;
@@ -213,7 +213,7 @@ bool pkgTxSend() {
     if (getReceive())
         return false;
     while (psramBusy)
-        delay(1);
+        vTaskDelay(1);
     psramBusy = true;
     char info[500];
     for (int i = 0; i < PKGTXSIZE; i++) {
@@ -267,7 +267,7 @@ bool pkgTxSend() {
 
 bool pkgTxDuplicate(AX25Msg ax25) {
     while (psramBusy)
-        delay(1);
+        vTaskDelay(1);
     psramBusy = true;
     char callsign[12];
     for (int i = 0; i < PKGTXSIZE; i++) {
@@ -301,7 +301,7 @@ bool pkgTxPush(const char *info, size_t len, int dly) {
         return false;
 
     while (psramBusy)
-        delay(1);
+        vTaskDelay(1);
     psramBusy = true;
     // for (int i = 0; i < PKGTXSIZE; i++)
     // {
@@ -445,7 +445,7 @@ boolean APRSConnect() {
         
         if (!aprsClient.connect(config.aprs_host, config.aprs_port)) {
             // Serial.print(".");
-            delay(100);
+            vTaskDelay(100);
             cnt++;
             if (cnt > 50) return false;
         }
@@ -463,7 +463,7 @@ boolean APRSConnect() {
         aprsClient.println(login);
         // Serial.println(login);
         log_i("Success");
-        delay(500);
+        vTaskDelay(500);
     }
 
     return true;
@@ -484,7 +484,7 @@ void setupPower()
     if (result == false) {
         while (1) {
             log_e("PMU is not online...");
-            delay(500);
+            vTaskDelay(500);
         }
     }
 
@@ -1243,14 +1243,14 @@ void loop()
                     String _msg = "WiFi ON";
                     OledPushMsg("", (char *)_msg.c_str(), (char *)_empty.c_str(), 15);
                     OledUpdate(0, false, false);
-                    delay(2000);
+                    vTaskDelay(2000);
                 } else {
                     config.wifi_mode = WIFI_OFF;
                     log_i("WiFi OFF");
                     String _msg = "WiFi OFF";
                     OledPushMsg("", (char *)_msg.c_str(), (char *)_empty.c_str(), 15);
                     OledUpdate(0, false, false);
-                    delay(2000);
+                    vTaskDelay(2000);
                 }
                 SaveConfig();
                 esp_restart();
@@ -1263,7 +1263,7 @@ void loop()
                     String _msg = "RF OFF";
                     OledPushMsg("", (char *)_msg.c_str(), (char *)_empty.c_str(), 3);
                     OledUpdate(0, false, false);
-                    delay(2000);
+                    vTaskDelay(2000);
                 } else {
                     String _msg = "";
                     if (callsignValid) {
@@ -1277,7 +1277,7 @@ void loop()
                     }
                     OledPushMsg("", (char *)_msg.c_str(), (char *)_empty.c_str(), 3);
                     OledUpdate(0, false, false);
-                    delay(2000);
+                    vTaskDelay(2000);
                 }
                 SaveConfig();
             }
@@ -1287,7 +1287,7 @@ void loop()
                 String _msg = "Reset OK";
                 OledPushMsg("", (char *)_msg.c_str(), (char *)_empty.c_str(), 15);
                 OledUpdate(0, false, false);
-                delay(2000);
+                vTaskDelay(2000);
                 DefaultConfig();
                 SaveConfig();
                 esp_restart();
