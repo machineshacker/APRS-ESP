@@ -237,19 +237,20 @@ bool pkgTxSend() {
                 APRS_sendTNC2Pkt(String(info)); // Send packet to RF
                 log_d("TX->RF: %s\n", info);
 
-                for (int i = 0; i < 100; i++) {
-#if defined(INVERT_PTT)
-                    if (digitalRead(PTT_PIN) == 1) {
-#else
-                    if (digitalRead(PTT_PIN) == 0) {
-#endif
-                        log_i("PTT RELEASE DETECTED");
-                        break;
-                    }
-                    vTaskDelay(50); // TOT 5sec
-                }
+//                 for (int i = 0; i < 100; i++) {
+// #if defined(INVERT_PTT)
+//                     if (digitalRead(PTT_PIN) == 1) {
+// #else
+//                     if (digitalRead(PTT_PIN) == 0) {
+// #endif
+//                         log_i("PTT RELEASE DETECTED");
+//                         break;
+//                     }
+//                     vTaskDelay(50); // TOT 5sec
+//                 }
 
-                // delay(2000);
+//                 // delay(2000);
+                    vTaskDelay(2000 / portTICK_PERIOD_MS);
                 TX_LED_OFF();
 #if defined(BOARD_TTWR_PLUS) || defined(BOARD_TTWR_V1)
                 adcActive(true);

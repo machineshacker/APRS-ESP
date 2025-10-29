@@ -341,6 +341,7 @@ void afsk_putchar(char c)
   AFSK_txStart(AFSK_modem);
   while (fifo_isfull_locked(&AFSK_modem->txFifo))
   {
+    vTaskDelay(10 / portTICK_PERIOD_MS);
     /* Wait */
     // delay(10);
   }
