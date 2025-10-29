@@ -246,7 +246,7 @@ bool pkgTxSend() {
                         log_i("PTT RELEASE DETECTED");
                         break;
                     }
-                    delay(50); // TOT 5sec
+                    vTaskDelay(50); // TOT 5sec
                 }
 
                 // delay(2000);
@@ -1841,16 +1841,15 @@ void taskOLEDDisplay(void *pvParameters) {
     log_i("Task <OLEDDisplay> started");
 
     for (;;) {
-        // OLED SWITCHED OFF THE INELEGANT WAY. 
 
-        // vTaskDelay(1000 / portTICK_PERIOD_MS);
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
 
-        // printPeriodicDebug();
+        printPeriodicDebug();
         
-        // if (fwUpdateProcess) {
-        //     OledUpdateFWU();
-        //     continue;
-        // }
+        if (fwUpdateProcess) {
+            OledUpdateFWU();
+            continue;
+        }
 
 #if defined(ADC_BATTERY)
         OledUpdate(batteryPercentage, false, AFSKInitAct);
