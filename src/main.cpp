@@ -1841,14 +1841,16 @@ void taskOLEDDisplay(void *pvParameters) {
     log_i("Task <OLEDDisplay> started");
 
     for (;;) {
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+        // OLED SWITCHED OFF THE INELEGANT WAY. 
 
-        printPeriodicDebug();
+        // vTaskDelay(1000 / portTICK_PERIOD_MS);
+
+        // printPeriodicDebug();
         
-        if (fwUpdateProcess) {
-            OledUpdateFWU();
-            continue;
-        }
+        // if (fwUpdateProcess) {
+        //     OledUpdateFWU();
+        //     continue;
+        // }
 
 #if defined(ADC_BATTERY)
         OledUpdate(batteryPercentage, false, AFSKInitAct);
